@@ -1,3 +1,7 @@
+{% load static %}
 {% include "game/topnav.html" %}
-
-<p>Welcome to Cat words</p>
+<div id="mainContent">
+<h1>Welcome to <span>Cat</span>egory words</h1>
+<p>A fun word game for all ages</p>
+<img id="catImage" src="{% static 'game/images/cartoon-cat.png' %}">
+</div>
