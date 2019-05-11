@@ -3,5 +3,8 @@ from django.views import generic
 
 # Create your views here.
 def game(request):
+	return render(request, 'game/game.html')
+
+def home(request):
 	return render(request, 'game/index.html')
 		

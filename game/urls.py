@@ -4,5 +4,6 @@ from . import views
 
 app_name = 'game'
 urlpatterns = [
-	path('', views.game, name="gane"),
+	path('', views.home, name="home"),
+	path('play/', views.game, name="game")
 ]
