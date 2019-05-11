@@ -1,7 +1,16 @@
 {% load static %}
 {% include "game/topnav.html" %}
 <div id="mainContent">
-<h1>Welcome to <span>Cat</span>egory words</h1>
-<p>A fun word game for all ages</p>
-<img id="catImage" src="{% static 'game/images/cartoon-cat.png' %}">
+	<h1>Welcome to <span>Cat</span>egory words</h1>
+	<h3>A fun word game for all ages</h3>
+	<img id="catImage" src="{% static 'game/images/cartoon-cat.png' %}">
+	<p>Please choose a category</p>
+	<select>
+	  <option value="animals">Animals</option>
+	  <option value="cars">Cars</option>
+	  <option value="movies">Movies</option>
+	  <option value="videogames">Video Games</option>
+	</select>
+	<br><br>
+	<button>Let's play!</button>
 </div>
