@@ -1,16 +1,21 @@
 {% load static %}
 {% include "game/topnav.html" %}
 <div id="mainContent">
-	<h1>Welcome to <span>Cat</span>egory words</h1>
+	<h1>Welcome to <span>Cat</span>egory Words</h1>
 	<h3>A fun word game for all ages</h3>
 	<img id="catImage" src="{% static 'game/images/cartoon-cat.png' %}">
 	<p>Please choose a category</p>
+
+	{% if category_list %}
 	<select>
-	  <option value="animals">Animals</option>
-	  <option value="cars">Cars</option>
-	  <option value="movies">Movies</option>
-	  <option value="videogames">Video Games</option>
+	{% for category in category_list %}
+		<option value="{{ category.category_text }}">{{ category.category_text }}</option>
+	{% endfor %}
 	</select>
+	{% else %}
+		<p>No Categories are available.</p>
+	{% endif %}
+	
 	<br><br>
 	<button onclick="location.href='{% url 'game:game' %}'">Let's play!</button>
 </div>
