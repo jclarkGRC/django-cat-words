@@ -7,15 +7,17 @@
 	<p>Please choose a category</p>
 
 	{% if category_list %}
-	<select>
+	<select name="category" form="categoryform">
 	{% for category in category_list %}
 		<option value="{{ category.category_text }}">{{ category.category_text }}</option>
 	{% endfor %}
 	</select>
+	<br><br>
+	<form action="{% url 'game:game' %}" id="categoryform" method="post">
+	{% csrf_token %}
+	<input type="submit" value="Let's Play!">
+	</form>
 	{% else %}
 		<p>No Categories are available.</p>
 	{% endif %}
-	
-	<br><br>
-	<button onclick="location.href='{% url 'game:game' %}'">Let's play!</button>
 </div>

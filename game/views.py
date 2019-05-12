@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.views import generic
 from .models import Category
 
@@ -11,7 +11,9 @@ class IndexView(generic.ListView):
     	return Category.objects.all()
 
 def game(request):
-	return render(request, 'game/game.html')
+	category = request.POST['category']
+	# print(category)
+	return render(request, 'game/game.html', {'category': category})
 
 def scores(request):
 	return render(request, 'game/scores.html')
