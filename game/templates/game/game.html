@@ -1,4 +1,36 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'game/style.css' %}">
+
 {% include "game/topnav.html" %}
 
-<p>The current category is: <strong>{{category}}</strong></p>
+<div id="rowOne">
+	<div class="leftContent">
+		<h1>30 second timer goes here...</h1>
+	</div>
+	<div class="rightContent">
+		<h1 id ="categoryTitle">The current category is: 
+		<br>
+		<strong>{{category}}</strong>
+		</h1>
+	</div>
+</div>
+<div id="rowTwo">
+	<div class="leftContent">
+	</div>
+	<div class="rightContent">
+	<div id="categoryList">
+		<div id="categoryListTitle">
+			<h1>Used words list</h1>
+		</div>
+		<ul>
+			<li>Goat</li>
+			<li>Dog</li>
+			<li>Cat</li>
+		</ul>
+	</div>
+	</div>
+</div>
+
+
 
