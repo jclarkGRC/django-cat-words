@@ -49,6 +49,7 @@ li a:hover.topNav {
 }
 
 #categoryList {
+  min-height: 80%;
   width: 50%;
   border: 1px solid black;
   border-width: thick;
@@ -79,8 +80,17 @@ li a:hover.topNav {
   height: 400px;
 }
 
-ul.categoryList {
+#textLogo {
+  height: 5%;
+}
+
+#welcomeText {
+  padding-top: 10px;
+}
+
+ul.unstyledList {
   list-style-type: none;
+  font-size: 25px;
 }
 
 .leftContent {
