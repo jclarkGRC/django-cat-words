@@ -1,24 +1,14 @@
 from django import forms
-from game.models import CurrentCategory, Category
+from game.models import CurrentWord
 
-class CurrentCategoryForm(forms.ModelForm):
-	CHOICES = (
-			('1','ME'),
-			('2','YOU'),
-			('3','WE'),
-		)
-	currentCategory = forms.ChoiceField(widget=forms.Select, choices=CHOICES)
-
+class CurrentWordForm(forms.ModelForm):
+	
 	class Meta:
-		model = CurrentCategory
+		model = CurrentWord
 		fields = (
-			'current_category_text',
+			'current_word',
 		)
 
 	def save(self, commit=True):
-		if commit:
-			currentCategory.save()
-
-		return currentCategory
-
+		current_word = super(CurrentWordForm, self).save(commit=True)
 
