@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from django.views import generic
-from .models import Category
+from game.models import Category, CurrentCategory
 
 # Create your views here.
 class IndexView(generic.ListView):
@@ -11,9 +11,14 @@ class IndexView(generic.ListView):
     	return Category.objects.all()
 
 def game(request):
-	category = request.POST['category']
-	# print(category)
-	return render(request, 'game/game.html', {'category': category})
+	if request.method == 'POST':
+		if CurrentCategory.objects.get(id=1):
+			current_category = CurrentCategory.objects.get(id=1)
+			current_category.current_category_text = request.POST['category']
+			current_category.save()
+		return render(request, 'game/game.html', {'category': current_category.current_category_text})
+	else:
+		return render(request, 'game/game.html', {'category': "choose a category"})
 
 def scores(request):
 	return render(request, 'game/scores.html')
