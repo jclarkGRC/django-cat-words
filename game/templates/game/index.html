@@ -13,7 +13,7 @@
 	{% endfor %}
 	</select>
 	<br><br>
-	<form action="{% url 'game:game' %}" id="categoryform" method="post">
+	<form action="" id="categoryform" method="post">
 	{% csrf_token %}
 	<input type="submit" value="Let's Play!">
 	</form>

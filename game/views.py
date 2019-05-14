@@ -18,7 +18,7 @@ def index(request):
 			current_category.current_category_text = request.POST['category']
 			current_category.save()
 			args = {'category': current_category.current_category_text}
-			return render(request, 'game/game.html', args)
+		return render(request, 'game/game.html', args)
 	else:
 		category_list = Category.objects.all()
 		return render(request, 'game/index.html', {'category_list': category_list})
