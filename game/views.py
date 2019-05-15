@@ -1,7 +1,6 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views import generic
-from game.models import Category, CurrentCategory
-from game.forms import CurrentWordForm
+from game.models import Category, CurrentCategory, CurrentWord
 
 # Create your views here.
 # class IndexView(generic.ListView):
@@ -18,12 +17,27 @@ def index(request):
 			current_category.current_category_text = request.POST['category']
 			current_category.save()
 			args = {'category': current_category.current_category_text}
-		return render(request, 'game/game.html', args)
+		return redirect('play/', args)
 	else:
 		category_list = Category.objects.all()
 		return render(request, 'game/index.html', {'category_list': category_list})
 
 def game(request):
+	if request.method == 'POST':
+		print("we")
+		if CurrentWord.objects.get(id=1):
+			print("got")
+			current_word = CurrentWord.objects.get(id=1)
+			current_word.current_word_text = request.POST['current_word']
+			current_word.save()
+			args = {'current_word': current_word}
+		else:
+			print("here")
+			current_word = CurrentWord(current_word_text=request.POST['current_word_text'])
+			args = {'current_word': current_word}
+		print("or")
+		return render(request, 'game/game.html', args)
+	print("here")
 	return render(request, 'game/game.html')
 
 def scores(request):
