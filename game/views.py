@@ -32,13 +32,17 @@ def game(request):
 			args = {'current_word': current_word}
 			return render(request, 'game/game.html', args)
 		else:
-			# current_word = CurrentWord(current_word_text=request.POST['current_word_text'])
-			# args = {'current_word': current_word}
-			print(request.POST['current_word'])
-	if CurrentCategory.objects.get(id=1):
-		current_category = CurrentCategory.objects.get(id=1)
-		args = {'category': current_category.current_category_text}
-	return render(request, 'game/game.html', args)
+			#current_word = CurrentWord(current_word_text=request.POST['current_word_text'])
+			#args = {'current_word': current_word}
+			current_word_text = request.POST['current_word']
+			current_word = CurrentWord(current_word_text=current_word_text);
+			args = {'current_word': current_word.current_word_text}
+			return render(request, 'game/game.html', args)
+	else:
+		if CurrentCategory.objects.get(id=1):
+			current_category = CurrentCategory.objects.get(id=1)
+			args = {'category': current_category.current_category_text}
+			return render(request, 'game/game.html', args)
 
 def scores(request):
 	return render(request, 'game/scores.html')
