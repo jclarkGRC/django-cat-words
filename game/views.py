@@ -26,13 +26,24 @@ def game(request):
 	if request.method == 'POST':
 		current_category = CurrentCategory.objects.get(id=1)
 		saved_words = SavedWord.objects.all()
-		current_word = CurrentWord.objects.filter(id=1).first()
-		current_word_text = request.POST['current_word']
-		current_word = CurrentWord(current_word_text=current_word_text)
-		current_word.save()
-		saved_word = SavedWord(saved_word_text=current_word_text)
+		if CurrentWord.objects.filter(pk=1):
+			current_word = CurrentWord.objects.filter(pk=1)
+			current_word.current_word_text = request.POST['current_word']
+			current_word.save()
+		else:
+			current_word = CurrentWord(current_word_text=request.POST['current_word'])
+			current_word.save()
+		saved_word = SavedWord(saved_word_text=request.POST['current_word'])
 		saved_word.save()
+		current_word = CurrentWord.objects.filter(pk=1)
+		current_word.current_word_text = request.POST['current_word']
 		args = {'category': current_category.current_category_text, 'current_word': current_word.current_word_text, 'saved_words': saved_words}
+		return render(request, 'game/game.html', args)
+	if request.GET.get('clear_saved_words'):
+		current_word = CurrentWord.objects.filter(pk=1)
+		current_category = CurrentCategory.objects.get(id=1)
+		SavedWord.objects.all().delete()
+		args = {'category': current_category.current_category_text}
 		return render(request, 'game/game.html', args)
 	else:
 		current_category = CurrentCategory.objects.get(id=1)
