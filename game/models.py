@@ -18,7 +18,7 @@ class CurrentCategory(models.Model):
 class CurrentWord(models.Model):
 	current_word_text = models.CharField(max_length=200)
 	def __str__(self):
-		return self.current_word
+		return self.current_word_text
 
 class SavedWord(models.Model):
 	saved_word_text = models.CharField(max_length=200)
