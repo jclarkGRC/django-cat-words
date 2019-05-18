@@ -38,12 +38,16 @@
 		<div id="categoryListTitle">
 			<h1>Used words list</h1>
 		</div>
+		{% if saved_words %}
 		<ul class="unstyledList">
-			<li>Goat</li>
-			<li>Dog</li>
-			<li>Cat</li>
+		{% for word in saved_words %}
+		<li>{{word}}</li>
+		{% endfor %}
 		</ul>
-	</div>
+		{% else %}
+		<p>No saved words yet...</p>
+		{% endif %}
+		</div>
 	</div>
 </div>
 
