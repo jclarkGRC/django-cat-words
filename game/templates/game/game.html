@@ -4,6 +4,12 @@
 <div id="rowOne">
 	<div class="leftContent">
 		<h1>30 second timer goes here...</h1>
+		<button id="button1">Click me!</button>
+		<script>
+			$( "#button1" ).on( "click", function( event ) {
+  				console.log("i was clicked")
+			});
+		</script>
 	</div>
 	<div class="rightContent">
 		<h1 id ="categoryTitle">The current category is: 
