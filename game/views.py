@@ -2,14 +2,6 @@ from django.shortcuts import get_object_or_404, render, redirect
 from django.views import generic
 from game.models import Category, CurrentCategory, CurrentWord, SavedWord
 
-# Create your views here.
-# class IndexView(generic.ListView):
-#     template_name = 'game/index.html'
-#     context_object_name = 'category_list'
-
-#     def get_queryset(self):
-#     	return Category.objects.all()
-
 def index(request):
 	if request.method == 'POST':
 		if CurrentCategory.objects.get(id=1):

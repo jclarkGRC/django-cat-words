@@ -39,6 +39,24 @@ li a:hover.topNav {
   float: right;
 }
 
+#currentWord {
+  width: 50%;
+  border: 1px solid black;
+  border-width: thick;
+  border-radius: 25px;
+  background-color: orange;
+  margin-left: 25%;
+}
+
+#guessWord {
+  width: 50%;
+  border: 1px solid black;
+  border-width: thick;
+  border-radius: 25px;
+  background-color: orange;
+  margin-left: 25%;
+}
+
 #categoryTitle {
   width: 50%;
   border: 1px solid black;
