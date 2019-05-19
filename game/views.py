@@ -4,11 +4,10 @@ from game.models import Category, CurrentCategory, CurrentWord, SavedWord
 
 def index(request):
 	if request.method == 'POST':
-		if CurrentCategory.objects.get(id=1):
-			current_category = CurrentCategory.objects.get(id=1)
-			current_category.current_category_text = request.POST['category']
-			current_category.save()
-			args = {'category': current_category.current_category_text}
+		current_category = CurrentCategory.objects.get()
+		current_category.current_category_text = request.POST['category']
+		current_category.save()
+		args = {'category': current_category.current_category_text}
 		return redirect('play/', args)
 	else:
 		category_list = Category.objects.all()
@@ -16,7 +15,7 @@ def index(request):
 
 def game(request):
 	if request.method == 'POST':
-		current_category = CurrentCategory.objects.get(id=1)
+		current_category = CurrentCategory.objects.get()
 		saved_words = SavedWord.objects.all()
 		if CurrentWord.objects.get():
 			current_word = CurrentWord.objects.get()
