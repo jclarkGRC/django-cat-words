@@ -14,6 +14,8 @@ def index(request):
 		return render(request, 'game/index.html', {'category_list': category_list})
 
 def game(request):
+	if request.is_ajax():
+		return redirect('scores/')
 	if request.method == 'POST':
 		current_category = CurrentCategory.objects.get()
 		saved_words = SavedWord.objects.all()

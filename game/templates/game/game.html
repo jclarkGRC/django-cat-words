@@ -32,8 +32,9 @@
 			  // If the count down is over, write some text 
 			  if (distance < 0) {
 			    clearInterval(x);
-			    $("#countdownTimer").innerHTML = "EXPIRED";
-			    console.log("timer finshed")
+			    $("#countdownTimer").html("EXPIRED");
+			    window.location.href = 'http://127.0.0.1:8000/game/scores';
+			    return false;
 			  }
 			}, 1000);
 	    });
