@@ -26,8 +26,8 @@ def game(request):
 	if request.method == 'POST':
 		current_category = CurrentCategory.objects.get(id=1)
 		saved_words = SavedWord.objects.all()
-		if CurrentWord.objects.filter(pk=1):
-			current_word = CurrentWord.objects.filter(pk=1)
+		if CurrentWord.objects.get():
+			current_word = CurrentWord.objects.get()
 			current_word.current_word_text = request.POST['current_word']
 			current_word.save()
 		else:
@@ -35,8 +35,6 @@ def game(request):
 			current_word.save()
 		saved_word = SavedWord(saved_word_text=request.POST['current_word'])
 		saved_word.save()
-		current_word = CurrentWord.objects.filter(pk=1)
-		current_word.current_word_text = request.POST['current_word']
 		args = {'category': current_category.current_category_text, 'current_word': current_word.current_word_text, 'saved_words': saved_words}
 		return render(request, 'game/game.html', args)
 	if request.GET.get('clear_saved_words'):
