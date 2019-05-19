@@ -35,7 +35,12 @@ def game(request):
 			current_word.save()
 		saved_word = SavedWord(saved_word_text=request.POST['current_word'])
 		saved_word.save()
-		args = {'category': current_category.current_category_text, 'current_word': current_word.current_word_text, 'saved_words': saved_words}
+		args = {
+		'category': current_category.current_category_text, 
+		'current_word': current_word.current_word_text, 
+		'saved_words': saved_words,
+		'letter_guess': current_word.current_word_text[-1].upper()
+		}
 		return render(request, 'game/game.html', args)
 	if request.GET.get('clear_saved_words'):
 		current_word = CurrentWord.objects.filter(pk=1)
@@ -53,6 +58,7 @@ def scores(request):
 
 def profile(request):
 	return render(request, 'game/profile.html')
+
 
 
 		
