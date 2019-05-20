@@ -22,7 +22,6 @@
 		</div>
 		<script>
 		  $( document ).ready(function() {
-	    		console.log( "document loaded" );
 			  // Set the date we're counting down to
 			  var countDownDate = new Date()
 			  countDownDate.setSeconds(countDownDate.getSeconds() + 30);
@@ -74,7 +73,7 @@
 	<div class="col-lg-4">
       <div id="currentScore">
 			<h1>Current Score: </h1>
-			<h1>0</h1>
+			<h1>{{ current_score }}</h1>
 	  </div>
     </div>
     <div class="col-lg-4">
