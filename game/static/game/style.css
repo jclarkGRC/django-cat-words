@@ -35,10 +35,16 @@ li a:hover.topNav {
   background-color: #111;
 }
 
+#modalContent {
+  background-color: #303030;
+  color: orange;
+  font-size: 30px;
+}
+
 #indexCard {
   width: 25%;
   margin: auto;
-  background-color: orange
+  background-color: orange;
 }
 
 #usedWordsBox {

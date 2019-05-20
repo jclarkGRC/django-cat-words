@@ -2,7 +2,33 @@
 {% block content %}
 {% load static %}
 
+<script type="text/javascript">
+    $(window).on('load',function(){
+        $('#myModal').modal('show');
+    });
+</script>
+
 <div id="mainContent">
+		<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="false">
+	  <div class="modal-dialog modal-dialog-scrollable" role="document">
+	    <div id="modalContent" class="modal-content">
+	      <div class="modal-header">
+	        <h1 class="modal-title" id="exampleModalScrollableTitle">Welcome to Cat Words.  How to play...</h1>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <p>Category words is a fun word game for all ages.  First, you will pick a category, then you will need to keep trying to guess words related to that category until the timer runs out! The goal is to guess a word that starts with the last letter of the previous word guessed. Guess more words and your score will increase.</p>
+			<p>Good luck!</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 	<img id=welcomeText src="{% static 'game/images/welcomeText.png' %}">
 	<h1>A fun word game for all ages</h1>
 	<img id="catImage" src="{% static 'game/images/cartoon-cat.png' %}">
