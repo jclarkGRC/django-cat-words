@@ -1,88 +1,92 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="row">
+<div class="col-lg-4">
+  <div>
+	<h1 id="countdownTimer"></h1>
+	<script>
+	  $( document ).ready(function() {
+    		console.log( "document loaded" );
+		  // Set the date we're counting down to
+		  var countDownDate = new Date()
+		  countDownDate.setSeconds(countDownDate.getSeconds() + 30);
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-4">
-      <div>
-		<h1 id="countdownTimer"></h1>
-		<script>
-		  $( document ).ready(function() {
-        		console.log( "document loaded" );
-			  // Set the date we're counting down to
-			  var countDownDate = new Date()
-			  countDownDate.setSeconds(countDownDate.getSeconds() + 30);
+		  // Update the count down every 1 second
+		  var x = setInterval(function() {
 
-			  // Update the count down every 1 second
-			  var x = setInterval(function() {
-
-			  // Get today's date and time
-			  var now = new Date().getTime();
-			    
-			  // Find the distance between now and the count down date
-			  var distance = countDownDate - now;
-			    
-			  // Time calculations for days, hours, minutes and seconds
-			  var seconds = Math.floor((distance % (1000 * 30)) / 1000);
-			    
-			  // Output the result in an element with id="demo"
-			  //document.getElementById("countdownTimer").innerHTML = seconds + "s ";
-			  $("#countdownTimer").html(seconds + "s ");
-			    
-			  // If the count down is over, write some text 
-			  if (distance < 0) {
-			    clearInterval(x);
-			    $("#countdownTimer").html("EXPIRED");
-			    window.location.href = 'http://127.0.0.1:8000/game/scores';
-			    return false;
-			  }
-			}, 1000);
-	    });
-		</script>
-	</div>
-    </div>
-    <div class="col-sm-4">
-      <div>
-		<div id="currentWord">
-			<h1>Current word is: </h1>
-			<h1>{{current_word}}</h1>
-		</div>
-		<br>
-		<div id="guessWord">
-			<h1>Guess a word that starts with: </h1>
-			<h1>{{ letter_guess }}</h1>
-		</div>
-		<br>
-		<form action="" id="currentWordForm" method="post">
-		{% csrf_token %}
-		<input name="current_word" placeholder="enter word...">
-		<input type="submit" value="Submit word!">
-		</form>
-	</div>
-    </div>
-    <div class="col-sm-4">
-      
-	<div id="categoryList">
-		<div id="categoryListTitle">
-			<h1>Used words list</h1>
-			<form action="" method="get">
- 			<input type="submit" class="btn" value="Clear saved words" name="clear_saved_words">
-			</form>
-			<br>
-		</div>
-		{% if saved_words %}
-		<ul class="unstyledList">
-		{% for word in saved_words %}
-		<li>{{word}}</li>
-		{% endfor %}
-		</ul>
-		{% else %}
-		<p>No saved words yet...</p>
-		{% endif %}
-		</div>
-    </div>
-  </div>
+		  // Get today's date and time
+		  var now = new Date().getTime();
+		    
+		  // Find the distance between now and the count down date
+		  var distance = countDownDate - now;
+		    
+		  // Time calculations for days, hours, minutes and seconds
+		  var seconds = Math.floor((distance % (1000 * 30)) / 1000);
+		    
+		  // Output the result in an element with id="demo"
+		  //document.getElementById("countdownTimer").innerHTML = seconds + "s ";
+		  $("#countdownTimer").html(seconds + "s ");
+		    
+		  // If the count down is over, write some text 
+		  if (distance < 0) {
+		    clearInterval(x);
+		    $("#countdownTimer").html("EXPIRED");
+		    window.location.href = 'http://127.0.0.1:8000/game/scores';
+		    return false;
+		  }
+		}, 1000);
+    });
+	</script>
 </div>
+</div>
+<div class="col-lg-4">
+  <div>
+	<div id="currentWord">
+		<h1>Current word is: </h1>
+		<h1>{{current_word}}</h1>
+	</div>
+	<br>
+	<div id="guessWord">
+		<h1>Guess a word that starts with: </h1>
+		<h1>{{ letter_guess }}</h1>
+	</div>
+	<br>
+	<form action="" id="currentWordForm" method="post">
+	{% csrf_token %}
+	<input name="current_word" placeholder="enter word...">
+	<input type="submit" value="Submit word!">
+	</form>
+</div>
+</div>
+<div class="col-lg-4">
+	<div>
+		<h1 id ="categoryTitle">The current category is: 
+		<br>
+		<strong>{{category}}</strong>
+		</h1>
+	</div>
+	<div id="usedWordsList">
+	<div id="usedWordsListTitle">
+		<h1>Used words list</h1>
+		<form action="" method="get">
+			<input type="submit" class="btn" value="Clear saved words" name="clear_saved_words">
+		</form>
+		<br>
+	</div>
+	{% if saved_words %}
+	<ul class="unstyledList">
+	{% for word in saved_words %}
+	<li>{{word}}</li>
+	{% endfor %}
+	</ul>
+	{% else %}
+	<p>No saved words yet...</p>
+	{% endif %}
+	</div>
+</div>
+</div>
+
+
 {% endblock content %}
 
 
