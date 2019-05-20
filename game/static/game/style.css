@@ -35,6 +35,12 @@ li a:hover.topNav {
   background-color: #111;
 }
 
+#indexCard {
+  width: 25%;
+  margin: auto;
+  background-color: orange
+}
+
 #usedWordsBox {
   float: right;
 }

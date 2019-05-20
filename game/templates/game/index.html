@@ -4,23 +4,26 @@
 
 <div id="mainContent">
 	<img id=welcomeText src="{% static 'game/images/welcomeText.png' %}">
-	<h3>A fun word game for all ages</h3>
+	<h1>A fun word game for all ages</h1>
 	<img id="catImage" src="{% static 'game/images/cartoon-cat.png' %}">
-	<p>Please choose a category</p>
-
-	{% if category_list %}
-	<select name="category" form="categoryform">
-	{% for category in category_list %}
-		<option value="{{ category.category_text }}">{{ category.category_text }}</option>
-	{% endfor %}
-	</select>
-	<br><br>
-	<form action="" id="categoryform" method="post">
-	{% csrf_token %}
-	<input type="submit" value="Let's Play!">
-	</form>
-	{% else %}
-		<p>No Categories are available.</p>
-	{% endif %}
+	<div class="card" id="indexCard">
+  		<div class="card-body" id="indexCardBody">
+    		<h2>Please choose a category</h2>
+    		{% if category_list %}
+			<select name="category" form="categoryform">
+				{% for category in category_list %}
+				<option value="{{ category.category_text }}">{{ category.category_text }}</option>
+				{% endfor %}
+			</select>
+			<hr>
+			<form action="" id="categoryform" method="post">
+				{% csrf_token %}
+				<input class="btn btn-secondary" type="submit" value="Let's Play!">
+			</form>
+			{% else %}
+				<p>No Categories are available.</p>
+			{% endif %}
+  		</div>
+	</div>
 </div>
 {% endblock content %}
