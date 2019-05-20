@@ -43,6 +43,8 @@ def game(request):
 		current_category = CurrentCategory.objects.get(id=1)
 		return render(request, 'game/game.html', {'category': current_category.current_category_text})
 
+def instructions(request):
+	return render(request, 'game/instructions.html')
 
 def scores(request):
 	return render(request, 'game/scores.html')
