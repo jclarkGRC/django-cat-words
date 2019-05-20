@@ -51,6 +51,22 @@ li a:hover.topNav {
   float: right;
 }
 
+#currentScore {
+  border: 1px solid black;
+  border-width: thick;
+  border-radius: 25px;
+  background-color: orange;
+  margin: auto;
+}
+
+#countdownContainer {
+  border: 1px solid black;
+  border-width: thick;
+  border-radius: 25px;
+  background-color: orange;
+  margin: auto;
+}
+
 #currentWord {
   border: 1px solid black;
   border-width: thick;
