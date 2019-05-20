@@ -18,7 +18,7 @@
 	  <div>
 		<div id='countdownContainer'>
 		<h1>Time remaining:</h1>
-		<h1 id="countdownTimer"></h1>
+		<h1><strong id="countdownTimer"></strong></h1>
 		</div>
 		<script>
 		  $( document ).ready(function() {
@@ -55,31 +55,34 @@
 	</div>
 	</div>
 	<div class="col-lg-4">
-    	<div>
-			<h1 id ="categoryTitle">The current category is: 
-			<br>
-			<strong>{{category}}</strong>
-			</h1>
+    	<div id ="categoryTitle">
+			<h1>The current category is:</h1>
+			<h1><strong>{{category}}</strong></h1>
 		</div>
 	</div>
 	<div class="col-lg-4">
 		<div id="currentWord">
 			<h1>Current word is: </h1>
-			<h1>{{current_word}}</h1>
+			<h1><strong>{{current_word}}</strong></h1>
 		</div>
 	</div>
 </div>
+<br>
 <div class="row">
 	<div class="col-lg-4">
       <div id="currentScore">
 			<h1>Current Score: </h1>
-			<h1>{{ current_score }}</h1>
+			{% if current_score %}
+			<h1><strong>{{ current_score }}</strong></h1>
+			{% else %}
+			<h1>0</h1>
+			{% endif %}
 	  </div>
     </div>
     <div class="col-lg-4">
       <div id="guessWord">
 			<h1>Guess a word that starts with: </h1>
-			<h1>{{ letter_guess }}</h1>
+			<h1><strong>{{ letter_guess }}</strong></h1>
 	  </div>
 	  <br>
 	  <form action="" id="currentWordForm" method="post">
@@ -100,11 +103,11 @@
 		{% if saved_words %}
 		<ul class="unstyledList">
 		{% for word in saved_words %}
-		<li>{{word}}</li>
+		<li><strong>{{word}}</strong></li>
 		{% endfor %}
 		</ul>
 		{% else %}
-		<p>No saved words yet...</p>
+		<p><strong>No saved words yet...</strong></p>
 		{% endif %}
 		</div>
     </div>

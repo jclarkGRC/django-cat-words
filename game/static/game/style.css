@@ -56,7 +56,7 @@ li a:hover.topNav {
   border-width: thick;
   border-radius: 25px;
   background-color: orange;
-  margin: auto;
+  margin-left: 10px;
 }
 
 #countdownContainer {
@@ -64,7 +64,7 @@ li a:hover.topNav {
   border-width: thick;
   border-radius: 25px;
   background-color: orange;
-  margin: auto;
+  margin-left: 10px;
 }
 
 #currentWord {
@@ -72,7 +72,7 @@ li a:hover.topNav {
   border-width: thick;
   border-radius: 25px;
   background-color: orange;
-  margin: auto;
+  margin-right: 10px;
 }
 
 #guessWord {
@@ -86,7 +86,7 @@ li a:hover.topNav {
   border: 1px solid black;
   border-width: thick;
   border-radius: 25px;
-  margin-right: 10px;
+  margin: auto;
   background-color: orange;
 }
 
