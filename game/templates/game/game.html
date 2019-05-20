@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div id="rowOne">
-	<div class="leftContent">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div>
 		<h1 id="countdownTimer"></h1>
 		<script>
 		  $( document ).ready(function() {
@@ -38,15 +40,9 @@
 	    });
 		</script>
 	</div>
-	<div class="rightContent">
-		<h1 id ="categoryTitle">The current category is: 
-		<br>
-		<strong>{{category}}</strong>
-		</h1>
-	</div>
-</div>
-<div id="rowTwo">
-	<div class="leftContent">
+    </div>
+    <div class="col-sm-4">
+      <div>
 		<div id="currentWord">
 			<h1>Current word is: </h1>
 			<h1>{{current_word}}</h1>
@@ -63,7 +59,9 @@
 		<input type="submit" value="Submit word!">
 		</form>
 	</div>
-	<div class="rightContent">
+    </div>
+    <div class="col-sm-4">
+      
 	<div id="categoryList">
 		<div id="categoryListTitle">
 			<h1>Used words list</h1>
@@ -82,7 +80,8 @@
 		<p>No saved words yet...</p>
 		{% endif %}
 		</div>
-	</div>
+    </div>
+  </div>
 </div>
 {% endblock content %}
 
