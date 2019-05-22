@@ -1,0 +1,1 @@
+web: gunicorn django-cat-words.wsgi --log-file -
