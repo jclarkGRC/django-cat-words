@@ -137,7 +137,8 @@ li a:hover.topNav {
 }
 
 #wordList {
-  height: 200px
+  height: 200px;
+  background-color: orange;
 }
 
 #catImage {

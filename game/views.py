@@ -44,8 +44,8 @@ def game(request):
 	if request.method == 'POST':
 		# The current category saved in the database
 		current_category = CurrentCategory.objects.get()
-		# The saved words saved in the database
-		saved_words = SavedWord.objects.all()
+		# The saved words saved in the database in reverse order
+		saved_words = SavedWord.objects.all().reverse()
 		# The current score of the player during gameplay
 		# This score is saved to the database
 		current_score = calculateScore(100)

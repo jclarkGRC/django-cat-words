@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 # Create your models here.
 
@@ -30,6 +31,7 @@ class CurrentWord(models.Model):
 
 class SavedWord(models.Model):
 	saved_word_text = models.CharField(max_length=200)
+	date = datetime.datetime.now()
 
 	def __str__(self):
 		return self.saved_word_text
