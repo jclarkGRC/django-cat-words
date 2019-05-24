@@ -40,12 +40,14 @@ def saveCurrentCategory(request):
 
 
 def game(request):
+
 	if request.method == 'POST':
 		# The current category saved in the database
 		current_category = CurrentCategory.objects.get()
 		# The saved words saved in the database
 		saved_words = SavedWord.objects.all()
 		# The current score of the player during gameplay
+		# This score is saved to the database
 		current_score = calculateScore(100)
 		# The current word displayed to the user during gameplay
 		current_word = saveCurrentWord(request)
@@ -53,31 +55,29 @@ def game(request):
 		addSavedWord(request)
 		# Arguments to be passed to the game.html template
 		args = {
-		'category': current_category.current_category_text, 
-		'current_word': current_word.current_word_text, 
-		'saved_words': saved_words,
-		'letter_guess': current_word.current_word_text[-1].upper(),
-		'current_score': current_score
-		}
-		return render(request, 'game/game.html', args)
-	if request.GET.get('clear_saved_words'):
-		# Set the current category
-		current_category = CurrentCategory.objects.get(id=1)
-		# Clear out the users score
-		current_score = calculateScore(0)
-		# Clear out all the saved words
-		clearAllSavedWords()
-		# Arguments to be passed to the game.html template
-		args = {
-		'category': current_category.current_category_text,
-		'current_score': current_score
+			'category': current_category.current_category_text,
+			'current_word': current_word.current_word_text,
+			'saved_words': saved_words,
+			'letter_guess': current_word.current_word_text[-1].upper(),
+			'current_score': current_score
 		}
 		return render(request, 'game/game.html', args)
 	else:
 		current_category = CurrentCategory.objects.get(id=1)
+		# Clear the users score when the game starts
+		clearSavedScore()
+		# Clear the saved words when the game starts
+		clearAllSavedWords()
 		return render(request, 'game/game.html', {'category': current_category.current_category_text})
 
 # GAME VIEW FUNCTIONS
+
+
+# Clear user's score when game loads
+
+
+def clearSavedScore():
+	CurrentScore.objects.all().delete()
 
 # The clearAllSavedWords function deletes all saved words from the database
 
@@ -123,20 +123,34 @@ def saveCurrentWord(request):
 
 
 def calculateScore(score):
-	current_score = CurrentScore.objects.get()
-	# If score is zero reset the score to zero
-	if score == 0:
-		current_score.current_score_text = 0
-	# Add the score paramenter to the current score
-	else:
-		current_score.current_score_text = current_score.current_score_text + score
-	# Save the current score to the database
-	current_score.save()
-	# Return the current score
-	return current_score.current_score_text
+	try:
+		current_score = CurrentScore.objects.get()
+		# If score is zero reset the score to zero
+		if score == 0:
+			current_score.current_score_text = 0
+			saveScore(current_score)
+			return current_score.current_score_text
+		# Add the score paramenter to the current score
+		else:
+			current_score.current_score_text = current_score.current_score_text + score
+			saveScore(current_score)
+			return current_score.current_score_text
+	except CurrentScore.DoesNotExist:
+		print("we got here")
+		current_score = CurrentScore(current_score_text=score)
+		saveScore(current_score)
+		return current_score.current_score_text
 
+
+# Save the score to the database
+
+
+def saveScore(score):
+	score.save()
 
 # THE INSTRUCTIONS VIEW
+
+
 def instructions(request):
 	return render(request, 'game/instructions.html')
 
