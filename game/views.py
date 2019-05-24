@@ -136,7 +136,6 @@ def calculateScore(score):
 			saveScore(current_score)
 			return current_score.current_score_text
 	except CurrentScore.DoesNotExist:
-		print("we got here")
 		current_score = CurrentScore(current_score_text=score)
 		saveScore(current_score)
 		return current_score.current_score_text
