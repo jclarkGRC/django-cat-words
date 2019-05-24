@@ -114,16 +114,21 @@ li a:hover.topNav {
 }
 
 #catImage2 {
-  width: 150px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
 }
 
-#textLogo {
-  height: 50px;
+#catImage3 {
+  width: 250px;
+  height: 300px;
 }
 
 #welcomeText {
   padding-top: 10px;
+}
+
+.textLogo {
+  height: 50px;
 }
 
 ul.unstyledList {

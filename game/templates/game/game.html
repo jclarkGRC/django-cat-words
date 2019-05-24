@@ -5,47 +5,47 @@
 
 <div class="jumbotron jumbotron-fluid">
     <div class="row">
-	  <div class="col-lg-4">
-	  	<div id ="categoryTitle">
-			<h1>The current category is:</h1>
-			<h1><strong>{{category}}</strong></h1>
-		</div>
-	</div>
-	<div class="col-lg-4">
-		<img src="{% static 'game/images/catWords.png' %}">
-	</div>
-	<div class="col-lg-4">
-      <div id="currentScore">
-			<h1>Current Score: </h1>
-			{% if current_score %}
-			<h1><strong>{{ current_score }}</strong></h1>
-			{% else %}
-			<h1>0</h1>
-			{% endif %}
-	  </div>
+        <div class="col-lg-4">
+            <div id="categoryTitle">
+                <h1>The current category is:</h1>
+                <h1><strong>{{category}}</strong></h1>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <img src="{% static 'game/images/catWords.png' %}">
+        </div>
+        <div class="col-lg-4">
+            <div id="currentScore">
+                <h1>Current Score: </h1>
+                {% if current_score %}
+                <h1><strong>{{ current_score }}</strong></h1>
+                {% else %}
+                <h1>0</h1>
+                {% endif %}
+            </div>
+        </div>
     </div>
-  </div>
-  <br>
-  <div class="row">
-	<div class="col-lg-4">
-		<div id="currentWord">
-			<h1>Current word is: </h1>
-			{% if current_word %}
-			<h1><strong>{{current_word}}</strong></h1>
-			{% else %}
-			<h3><strong>Please enter a word related to {{category}} to start playing</strong></h3>
-			{% endif %}
-		</div>
-	</div>
-	<div class="col-lg-4">
-		<img id="catImage2" src="{% static 'game/images/cartoon-cat2.png' %}">
-	</div>
-	<div class="col-lg-4">
-		<div id='countdownContainer'>
-		<h1>Time remaining:</h1>
-		<h1><strong id="countdownTimer"></strong></h1>
-		</div>
-		<script>
+    <br>
+    <div class="row">
+        <div class="col-lg-4">
+            <div id="currentWord">
+                <h1>Current word is: </h1>
+                {% if current_word %}
+                <h1><strong>{{current_word}}</strong></h1>
+                {% else %}
+                <h3><strong>Please enter a word related to {{category}} to start playing</strong></h3>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <img id="catImage2" src="{% static 'game/images/cartoon-cat3.png' %}">
+        </div>
+        <div class="col-lg-4">
+            <div id='countdownContainer'>
+                <h1>Time remaining:</h1>
+                <h1><strong id="countdownTimer"></strong></h1>
+            </div>
+            <script>
 		  $( document ).ready(function() {
 			  // Set the date we're counting down to
 			  var countDownDate = new Date()
@@ -76,58 +76,51 @@
 			  }
 			}, 1000);
 	    });
-		</script>
-	  </div>
-</div>
+
+            </script>
+        </div>
+    </div>
 </div>
 <br>
 <div class="row">
-	<div class="col-lg-4">
-		<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
-</div>
-	</div>
     <div class="col-lg-4">
-      <div id="guessWord">
-      		<h1>Guess a word that starts with: </h1>
-			{% if letter_guess %}
-			<h1><strong>{{ letter_guess }}</strong></h1>
-			{% else %}
-			<h3><strong>Please enter a word related to {{category}} to start playing</strong></h3>
-			{% endif %}	
-	  </div>
-	  <br>
-	  <form action="" id="currentWordForm" method="post">
-	  {% csrf_token %}
-	  <input name="current_word" placeholder="enter word...">
-	  <input type="submit" value="Submit word!">
-	  </form>
+        <img id="catImage3" src="{% static 'game/images/cartoon-cat2.png' %}"/>
     </div>
     <div class="col-lg-4">
-      <div id="usedWordsList">
-		<div id="usedWordsListTitle">
-			<h1>Used words list</h1>
-			<form action="" method="get">
-				<button type="submit" value="Clear saved words" name="clear_saved_words">Clear used words</button>
-			</form>
-			<br>
-		</div>
-		{% if saved_words %}
-		<ul class="unstyledList">
-		{% for word in saved_words %}
-		<li><strong>{{word}}</strong></li>
-		{% endfor %}
-		</ul>
-		{% else %}
-		<p><strong>No saved words yet...</strong></p>
-		{% endif %}
-		</div>
+        <div id="guessWord">
+            <h1>Guess a word that starts with: </h1>
+            {% if letter_guess %}
+            <h1><strong>{{ letter_guess }}</strong></h1>
+            {% else %}
+            <h3><strong>Please enter a word related to {{category}} to start playing</strong></h3>
+            {% endif %}
+        </div>
+        <br>
+        <form action="" id="currentWordForm" method="post">
+            {% csrf_token %}
+            <input name="current_word" placeholder="enter word...">
+            <input type="submit" value="Submit word!">
+        </form>
+    </div>
+    <div class="col-lg-4">
+        <div id="usedWordsList">
+            <div id="usedWordsListTitle">
+                <h1>Used words list</h1>
+                <form action="" method="get">
+                    <button type="submit" value="Clear saved words" name="clear_saved_words">Clear used words</button>
+                </form>
+                <br>
+            </div>
+            {% if saved_words %}
+            <ul class="unstyledList">
+                {% for word in saved_words %}
+                <li><strong>{{word}}</strong></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p><strong>No saved words yet...</strong></p>
+            {% endif %}
+        </div>
     </div>
 </div>
 
