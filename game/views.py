@@ -1,9 +1,8 @@
 # views.py
 # Created by Joshua Clark on 5/20/19
 
-from django.shortcuts import get_object_or_404, render, redirect
-from django.views import generic
-from game.models import Category, CurrentCategory, CurrentWord, SavedWord, CurrentScore
+from django.shortcuts import render, redirect
+from game.models import Category, CurrentCategory, CurrentWord, SavedWord, CurrentScore, HighScore
 
 # THE INDEX VIEW
 
@@ -147,24 +146,22 @@ def calculateScore(score):
 def saveScore(score):
 	score.save()
 
-# THE INSTRUCTIONS VIEW
-
-
-def instructions(request):
-	return render(request, 'game/instructions.html')
 
 # THE SCORES VIEW
 
 
 def scores(request):
+	# Clear all saved words from the database
 	clearAllSavedWords()
-	return render(request, 'game/scores.html')
+	current_scores = CurrentScore.objects.all()
+	high_scores = HighScore.objects.all().order_by('score')
+	for score in current_scores:
+		print(score.current_score_text)
+	args = {
+		'high_scores': high_scores
+	}
+	return render(request, 'game/scores.html', args)
 
-# THE PROFILE VIEW
-
-
-def profile(request):
-	return render(request, 'game/profile.html')
 
 
 

@@ -42,3 +42,11 @@ class CurrentScore(models.Model):
 
 	def __int__(self):
 		return self.current_score_text
+
+
+class HighScore(models.Model):
+	score = models.IntegerField()
+	username = models.CharField(max_length=200)
+
+	def __int__(self):
+		return self.score
