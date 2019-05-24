@@ -83,7 +83,7 @@
 <br>
 <div class="row">
     <div class="col-lg-4">
-        <img id="catImage3" src="{% static 'game/images/cartoon-cat2.png' %}"/>
+        <img id="catImage4" src="{% static 'game/images/cartoon-cat4.png' %}"/>
     </div>
     <div class="col-lg-4">
         <div id="guessWord">
@@ -111,7 +111,7 @@
             {% if saved_words %}
             <ul id="wordList" class="list-group">
                 {% for word in saved_words %}
-                <li class="list-group-item"><strong><h1>{{word}}</h1></strong></li>
+                <li class="list-group-item"><strong><h3>{{word}}</h3></strong></li>
                 {% endfor %}
             </ul>
             {% else %}

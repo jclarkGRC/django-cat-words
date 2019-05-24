@@ -4,9 +4,22 @@
 
 <script type="text/javascript">
     $(window).on('load',function(){
-        $('#myModal').modal('show');
-    });
 
+        // Check to see if the user is a first time user.
+        let firstTimeUser = localStorage.getItem('firstTimeUser')
+
+        // Only show the modal if it is the users first time playing
+        if(firstTimeUser == null){
+            $('#myModal').modal('show');
+            localStorage.setItem('firstTimeUser', 'false')
+        }
+        // Set game played so we know whether to show the high scores modal or not if
+        // The user goes directly to the high scores page from the home page without playing
+        // the game
+        $('#letsPlay').on('click', function() {
+        localStorage.setItem('gamePlayed', 'true')
+        });
+    });
 </script>
 
 <div id="mainContent">
@@ -55,7 +68,7 @@
             <hr>
             <form action="" id="categoryform" method="post">
                 {% csrf_token %}
-                <input class="btn btn-secondary" type="submit" value="Let's Play!">
+                <button id="letsPlay" class="btn btn-secondary" type="submit">Let's Play!</button>
             </form>
             {% else %}
             <p>No Categories are available.</p>

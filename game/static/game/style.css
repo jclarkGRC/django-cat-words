@@ -156,6 +156,11 @@ li a:hover.topNav {
   height: 300px;
 }
 
+#catImage4 {
+  width: 350px;
+  height: 350px;
+}
+
 #welcomeText {
   padding-top: 10px;
 }

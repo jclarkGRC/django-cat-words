@@ -5,11 +5,16 @@
 
 <script type="text/javascript">
     $(window).on('load',function(){
-        if(localStorage.getItem('scoreSaved') == null){
+        let scoreSaved = localStorage.getItem('scoreSaved');
+        let gamePlayed = localStorage.getItem('gamePlayed');
+        if(scoreSaved == null && gamePlayed == "true"){
         $('#myModal').modal('show');
         }
         $('#saveScore').on('click', function(){
             localStorage.setItem('scoreSaved', "true");
+        });
+        $('#playAgainButton').on('click', function(){
+            localStorage.removeItem('scoreSaved')
         });
     });
 </script>
@@ -22,16 +27,17 @@
                     <h1 class="modal-title" id="exampleModalScrollableTitle">Thank you for playing Cat Words!</h1>
                 </div>
                 <div class="modal-body">
-                   <form action="" id="scoreform" method="post">
+                    <form action="" id="saveUserScore" method="post">
+                        {% csrf_token %}
                       <div class="form-group">
                         <label for="usernameField">Enter your name</label>
-                        <input class="form-control" id="usernameField" name="username" placeholder="Enter username">
+                        <input class="form-control" id="usernameField" name="username" form="saveUserScore" placeholder="Enter username">
                         <small id="emailHelp" class="form-text text-muted">Enter you name to see if you made it to the top 10!</small>
                       </div>
                       <div class="modal-footer">
-                        <button id="saveScore" type="submit" class="btn btn-secondary" data-dismiss="modal">Save Score</button>
+                      <button id="saveScore" type="submit" class="btn btn-secondary">Save Score</button>
                       </div>
-                   </form>
+                    </form>
                 </div>
             </div>
         </div>
@@ -50,7 +56,7 @@
             <ul class="list-group">
                 {% if high_scores %}
                 {% for score in high_scores %}
-                <li class="list-group-item">{{score.username}}: {{score.score}}</li>
+                <li class="list-group-item"><h5>{{score.username}}: {{score.score}}</h5></li>
                 {% endfor %}
                 {% else %}
                 <p><strong>No high scores yet...</strong></p>

@@ -13,12 +13,16 @@ def index(request):
 		# Save the current category to be used during gameplay
 		current_category_text = saveCurrentCategory(request)
 		# Arguments to be passed to the game.html template
-		args = {'category': current_category_text}
+		args = {
+			'category': current_category_text
+		}
 		return redirect('play/', args)
 	# Otherwise display the index view so the user can choose a category 
 	else:
 		# Clear saved words list if any exist
 		clearAllSavedWords()
+		# Set the score to 0 by default
+		calculateScore(0)
 		# All categories saved in the database
 		category_list = Category.objects.all()
 		return render(request, 'game/index.html', {'category_list': category_list})
@@ -65,6 +69,10 @@ def game(request):
 		current_category = CurrentCategory.objects.get(id=1)
 		# Clear the users score when the game starts
 		clearSavedScore()
+		# Set the score back to zero just in case the user doesn't
+		# play the game at all.  If no score is entered it will break
+		# the application, so we set 0 here.
+		calculateScore(0)
 		# Clear the saved words when the game starts
 		clearAllSavedWords()
 		return render(request, 'game/game.html', {'category': current_category.current_category_text})
@@ -153,13 +161,19 @@ def saveScore(score):
 def scores(request):
 	# Clear all saved words from the database
 	clearAllSavedWords()
+	# Grab the current score from the recently played game
 	current_score = CurrentScore.objects.get()
 	high_scores = HighScore.objects.all().order_by('-score')[:10]
 	if request.method == 'POST':
+		# Get the user's name from the form
 		username = request.POST['username']
-		print("The current user is: ", username)
+		# Create a high score entry
+		user_score = HighScore(score=current_score, username=username)
+		# Save into high scores database.  If it is high enough, it will show in the top 10
+		user_score.save()
 	args = {
 		'high_scores': high_scores,
 		'current_score': current_score.current_score_text,
 	}
+	print('or we got here')
 	return render(request, 'game/scores.html', args)
