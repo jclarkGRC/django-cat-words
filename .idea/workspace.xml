@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="408b2a98-b4e6-4b82-a010-7710716065e2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/migrations/0002_currentword_savedword.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/migrations/0003_auto_20190514_0542.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/migrations/0004_auto_20190515_0350.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/migrations/0005_currentscore.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/migrations/0006_highscore.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game/migrations/__init__.py" beforeDir="false" />
-    </list>
+    <list default="true" id="408b2a98-b4e6-4b82-a010-7710716065e2" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +13,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/catWords/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
+            <state relative-caret-position="424">
               <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
             </state>
           </provider>
@@ -136,6 +126,11 @@
             <path>
               <item name="django-cat-words" type="b2602c69:ProjectViewProjectNode" />
               <item name="django-cat-words" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="django-cat-words" type="b2602c69:ProjectViewProjectNode" />
+              <item name="django-cat-words" type="462c0819:PsiDirectoryNode" />
+              <item name="catWords" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="django-cat-words" type="b2602c69:ProjectViewProjectNode" />
@@ -309,13 +304,6 @@
     <entry file="file://$PROJECT_DIR$/catWords/wsgi.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/catWords/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/catWords/urls.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -348,6 +336,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/catWords/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
         </state>
       </provider>
     </entry>
