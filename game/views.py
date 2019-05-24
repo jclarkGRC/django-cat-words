@@ -153,16 +153,13 @@ def saveScore(score):
 def scores(request):
 	# Clear all saved words from the database
 	clearAllSavedWords()
-	current_scores = CurrentScore.objects.all()
+	current_score = CurrentScore.objects.get()
 	high_scores = HighScore.objects.all().order_by('-score')[:10]
-	for score in current_scores:
-		print(score.current_score_text)
+	if request.method == 'POST':
+		username = request.POST['username']
+		print("The current user is: ", username)
 	args = {
-		'high_scores': high_scores
+		'high_scores': high_scores,
+		'current_score': current_score.current_score_text,
 	}
 	return render(request, 'game/scores.html', args)
-
-
-
-
-		
