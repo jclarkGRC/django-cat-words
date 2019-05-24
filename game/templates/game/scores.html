@@ -5,7 +5,7 @@
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4"><img src="{% static 'game/images/highScores.png' %}"></h1>
-        <h2>Great job! Let's play again sometime!</h2>
+        <h2>Thank you for playing Cat Words!</h2>
     </div>
 </div>
 <div class="container">
@@ -13,11 +13,20 @@
         <div class="col-lg-3">
         </div>
         <div class="col-lg-6">
-            <ol>
-                <li>Joshua: 800</li>
-                <li>Gurman: 800</li>
-                <li>Patty: 800</li>
-            </ol>
+            <ul class="list-group">
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+            <br>
+            <a  href="{% url 'game:index' %}"><button id="saveWordButton" type="button" class="btn btn-outline-warning btn-block active"><h1>Play again?</h1></button></a>
         </div>
         <div class="col-lg-3">
         </div>

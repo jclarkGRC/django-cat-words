@@ -144,3 +144,12 @@ ul.unstyledList {
   list-style-type: none;
   font-size: 25px;
 }
+
+a {
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: #2A6496;
+    text-decoration: none;
+}

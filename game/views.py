@@ -6,6 +6,8 @@ from django.views import generic
 from game.models import Category, CurrentCategory, CurrentWord, SavedWord, CurrentScore
 
 # THE INDEX VIEW
+
+
 def index(request):
 	# If a category was chosen, save the category and proceed to the game view
 	if request.method == 'POST':
@@ -16,6 +18,8 @@ def index(request):
 		return redirect('play/', args)
 	# Otherwise display the index view so the user can choose a category 
 	else:
+		# Clear saved words list if any exist
+		clearAllSavedWords()
 		# All categories saved in the database
 		category_list = Category.objects.all()
 		return render(request, 'game/index.html', {'category_list': category_list})
@@ -24,6 +28,8 @@ def index(request):
 
 # The saveCurrentCategory function saves the category chosen by the user to be played
 # @params request The http request i.e. GET POST
+
+
 def saveCurrentCategory(request):
 	current_category = CurrentCategory.objects.get()
 	current_category.current_category_text = request.POST['category']
@@ -31,6 +37,8 @@ def saveCurrentCategory(request):
 	return current_category.current_category_text
 
 # THE GAME VIEW
+
+
 def game(request):
 	if request.method == 'POST':
 		# The current category saved in the database
@@ -72,11 +80,15 @@ def game(request):
 # GAME VIEW FUNCTIONS
 
 # The clearAllSavedWords function deletes all saved words from the database
+
+
 def clearAllSavedWords():
 	SavedWord.objects.all().delete()
 
 # The addSavedWord function adds a new word to the list of saved words
 # @params request The http request i.e. GET POST
+
+
 def addSavedWord(request):
 	# Create a saved word object
 	saved_word = SavedWord(saved_word_text=request.POST['current_word'])
@@ -87,6 +99,8 @@ def addSavedWord(request):
 # The saveCurrentWord function takes the users input from the post request 
 # and saves it into the database
 # @params request The http request i.e. GET POST
+
+
 def saveCurrentWord(request):
 	# If the current word exists
 	if CurrentWord.objects.get():
@@ -106,6 +120,8 @@ def saveCurrentWord(request):
 
 # The calculateScore function calculates the users score during gameplay
 # @params score  The amount at which the score will increase
+
+
 def calculateScore(score):
 	current_score = CurrentScore.objects.get()
 	# If score is zero reset the score to zero
@@ -125,9 +141,15 @@ def instructions(request):
 	return render(request, 'game/instructions.html')
 
 # THE SCORES VIEW
+
+
 def scores(request):
+	clearAllSavedWords()
 	return render(request, 'game/scores.html')
+
 # THE PROFILE VIEW
+
+
 def profile(request):
 	return render(request, 'game/profile.html')
 
