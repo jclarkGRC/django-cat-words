@@ -35,6 +35,15 @@ li a:hover.topNav {
   background-color: #111;
 }
 
+#saveWordButton {
+  background: orange;
+}
+
+#enterWordForm {
+  width:50%;
+  margin: auto;
+}
+
 #categoryList {
   width: 25%
 }
