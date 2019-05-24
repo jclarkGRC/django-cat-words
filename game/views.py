@@ -154,7 +154,7 @@ def scores(request):
 	# Clear all saved words from the database
 	clearAllSavedWords()
 	current_scores = CurrentScore.objects.all()
-	high_scores = HighScore.objects.all().order_by('score')
+	high_scores = HighScore.objects.all().order_by('-score')[:10]
 	for score in current_scores:
 		print(score.current_score_text)
 	args = {
