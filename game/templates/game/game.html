@@ -2,20 +2,45 @@
 {% block content %}
 {% load static %}
 
-<div class="row">
-	<div class="col-lg-12">
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="row">
+	  <div class="col-lg-4">
+	  	<div id ="categoryTitle">
+			<h1>The current category is:</h1>
+			<h1><strong>{{category}}</strong></h1>
+		</div>
+	</div>
+	<div class="col-lg-4">
 		<img src="{% static 'game/images/catWords.png' %}">
 	</div>
-</div>
-<div class="row">
-	<div class="col-lg-12">
+	<div class="col-lg-4">
+      <div id="currentScore">
+			<h1>Current Score: </h1>
+			{% if current_score %}
+			<h1><strong>{{ current_score }}</strong></h1>
+			{% else %}
+			<h1>0</h1>
+			{% endif %}
+	  </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+	<div class="col-lg-4">
+		<div id="currentWord">
+			<h1>Current word is: </h1>
+			{% if current_word %}
+			<h1><strong>{{current_word}}</strong></h1>
+			{% else %}
+			<h3><strong>Please enter a word related to {{category}} to start playing</strong></h3>
+			{% endif %}
+		</div>
+	</div>
+	<div class="col-lg-4">
 		<img id="catImage2" src="{% static 'game/images/cartoon-cat2.png' %}">
 	</div>
-</div>
-<br>
-<div class="row">
 	<div class="col-lg-4">
-	  <div>
 		<div id='countdownContainer'>
 		<h1>Time remaining:</h1>
 		<h1><strong id="countdownTimer"></strong></h1>
@@ -46,43 +71,36 @@
 			  if (distance < 0) {
 			    clearInterval(x);
 			    $("#countdownTimer").html("TIMES UP!");
-			    window.location.href = 'http://127.0.0.1:8000/game/scores';
+			    window.location.href = 'http://' + document.domain + ':8000/game/scores';
 			    return false;
 			  }
 			}, 1000);
 	    });
 		</script>
-	</div>
-	</div>
-	<div class="col-lg-4">
-    	<div id ="categoryTitle">
-			<h1>The current category is:</h1>
-			<h1><strong>{{category}}</strong></h1>
-		</div>
-	</div>
-	<div class="col-lg-4">
-		<div id="currentWord">
-			<h1>Current word is: </h1>
-			<h1><strong>{{current_word}}</strong></h1>
-		</div>
-	</div>
+	  </div>
+</div>
 </div>
 <br>
 <div class="row">
 	<div class="col-lg-4">
-      <div id="currentScore">
-			<h1>Current Score: </h1>
-			{% if current_score %}
-			<h1><strong>{{ current_score }}</strong></h1>
-			{% else %}
-			<h1>0</h1>
-			{% endif %}
-	  </div>
-    </div>
+		<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+	</div>
     <div class="col-lg-4">
       <div id="guessWord">
-			<h1>Guess a word that starts with: </h1>
+      		<h1>Guess a word that starts with: </h1>
+			{% if letter_guess %}
 			<h1><strong>{{ letter_guess }}</strong></h1>
+			{% else %}
+			<h3><strong>Please enter a word related to {{category}} to start playing</strong></h3>
+			{% endif %}	
 	  </div>
 	  <br>
 	  <form action="" id="currentWordForm" method="post">

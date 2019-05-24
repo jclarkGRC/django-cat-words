@@ -43,7 +43,7 @@
   		<div class="card-body" id="indexCardBody">
     		<h2>Please choose a category</h2>
     		{% if category_list %}
-			<select name="category" form="categoryform">
+			<select id="categoryList" class="custom-select" name="category" form="categoryform">
 				{% for category in category_list %}
 				<option value="{{ category.category_text }}">{{ category.category_text }}</option>
 				{% endfor %}
