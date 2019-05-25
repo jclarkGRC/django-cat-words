@@ -20,7 +20,7 @@ You can view the admin dashboard for the application by navigating to http://loc
 
 The application is deployed using Heroku to host the application. You can view the application here:
 
-https://www.categorywords.com 
+www.categorywords.com 
 
 In order to deploy new changes of the app to the hosting url you need to run the following command after you commit changes:
 
