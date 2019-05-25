@@ -29,6 +29,13 @@ class CurrentWord(models.Model):
 		return self.current_word_text
 
 
+class PreviousWord(models.Model):
+	previous_word_text = models.CharField(max_length=200)
+
+	def __str__(self):
+		return self.previous_word_text
+
+
 class SavedWord(models.Model):
 	saved_word_text = models.CharField(max_length=200)
 	date = datetime.datetime.now()

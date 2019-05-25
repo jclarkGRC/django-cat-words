@@ -2,7 +2,7 @@
 # Created by Joshua Clark on 5/20/19
 
 from django.shortcuts import render, redirect
-from game.models import Category, CurrentCategory, CurrentWord, SavedWord, CurrentScore, HighScore
+from game.models import Category, CurrentCategory, CurrentWord, SavedWord, CurrentScore, HighScore, PreviousWord
 
 # THE INDEX VIEW
 
@@ -47,7 +47,8 @@ def game(request):
 	if request.method == 'POST':
 		# The current category saved in the database
 		current_category = CurrentCategory.objects.get()
-		# The saved words saved in the database in reverse order
+		# Get the saved words saved in the database in reverse order
+		# to display to the UI
 		saved_words = SavedWord.objects.all().order_by('-id')
 		# The current score of the player during gameplay
 		# This score is saved to the database
@@ -68,7 +69,7 @@ def game(request):
 	else:
 		current_category = CurrentCategory.objects.get(id=1)
 		# Clear the users score when the game starts
-		clearSavedScore()
+		clear_saved_score()
 		# Set the score back to zero just in case the user doesn't
 		# play the game at all.  If no score is entered it will break
 		# the application, so we set 0 here.
@@ -80,11 +81,18 @@ def game(request):
 # GAME VIEW FUNCTIONS
 
 
+# Get previous word
+
+
+def get_previous_word():
+	SavedWord.objects.get()
+
 # Clear user's score when game loads
 
 
-def clearSavedScore():
+def clear_saved_score():
 	CurrentScore.objects.all().delete()
+
 
 # The clearAllSavedWords function deletes all saved words from the database
 
