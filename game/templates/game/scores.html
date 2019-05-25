@@ -3,45 +3,33 @@
 
 {% block content %}
 
-<script type="text/javascript">
-    $(window).on('load',function(){
-        let scoreSaved = localStorage.getItem('scoreSaved');
-        let gamePlayed = localStorage.getItem('gamePlayed');
-        if(scoreSaved == null && gamePlayed == "true"){
-        $('#myModal').modal('show');
-        }
-        $('#saveScore').on('click', function(){
-            localStorage.setItem('scoreSaved', "true");
-        });
-        $('#playAgainButton').on('click', function(){
-            localStorage.removeItem('scoreSaved')
-        });
-    });
-</script>
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
-         aria-hidden="false">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div id="modalContent" class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title" id="exampleModalScrollableTitle">Thank you for playing Cat Words!</h1>
-                </div>
-                <div class="modal-body">
-                    <form action="" id="saveUserScore" method="post">
-                        {% csrf_token %}
-                      <div class="form-group">
-                        <label for="usernameField">Enter your name</label>
-                        <input class="form-control" id="usernameField" name="username" form="saveUserScore" placeholder="Enter username">
-                        <small id="emailHelp" class="form-text text-muted">Enter you name to see if you made it to the top 10!</small>
-                      </div>
-                      <div class="modal-footer">
-                      <button id="saveScore" type="submit" class="btn btn-secondary">Save Score</button>
-                      </div>
-                    </form>
-                </div>
+<!--Javascript-->
+<script type="text/javascript" src="{% static 'game/js/scores.js' %}"></script>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
+     aria-hidden="false">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div id="modalContent" class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalScrollableTitle">Thank you for playing Cat Words!</h1>
+            </div>
+            <div class="modal-body">
+                <form action="" id="saveUserScore" method="post">
+                    {% csrf_token %}
+                  <div class="form-group">
+                    <label for="usernameField">Enter your name</label>
+                    <input class="form-control" id="usernameField" name="username" form="saveUserScore" placeholder="Enter username">
+                    <small id="emailHelp" class="form-text text-muted">Enter you name to see if you made it to the top 10!</small>
+                  </div>
+                  <div class="modal-footer">
+                  <button id="saveScore" type="submit" class="btn btn-secondary">Save Score</button>
+                  </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4"><img src="{% static 'game/images/highScores.png' %}"></h1>
