@@ -1,7 +1,28 @@
 {% load static %}
 
-<ul class="topNav">
-  <li class="topNav"><a class="topNav" href="{% url 'game:index' %}"><img class="textLogo" src="{% static 'game/images/catWordsText.png' %}"></a></li>
-  <li class="topNav"><a class="topNav" href="{% url 'game:scores' %}"><img class="textLogo" src="{% static 'game/images/highScoreText.png' %}"></a></li>
-  <li style="float:right" class="topNav"><a class="topNav" href="https://github.com/jclarkGRC/django-cat-words"><img class="textLogo" src="{% static 'game/images/githubIcon.png' %}">&nbsp;Code Available on Github</a></li>
-</ul>
+<!--old nav bar-->
+
+<!--<ul class="topNav">-->
+<!--  <li class="topNav"><a class="topNav" href="{% url 'game:index' %}"><img class="textLogo" src="{% static 'game/images/catWordsText.png' %}"></a></li>-->
+<!--  <li class="topNav"><a class="topNav" href="{% url 'game:scores' %}"><img class="textLogo" src="{% static 'game/images/highScoreText.png' %}"></a></li>-->
+<!--  <li style="float:right" class="topNav"><a class="topNav" href="https://github.com/jclarkGRC/django-cat-words"><img class="textLogo" src="{% static 'game/images/githubIcon.png' %}">&nbsp;Code Available on Github</a></li>-->
+<!--</ul>-->
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'game:index' %}"><img class="textLogo" src="{% static 'game/images/catWordsText.png' %}"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'game:index' %}"><img class="textLogo" src="{% static 'game/images/home.png' %}"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'game:scores' %}"><img class="textLogo" src="{% static 'game/images/highScoreText.png' %}"></a>
+      </li>
+    </ul>
+    <a class="nav-link" href="https://github.com/jclarkGRC/django-cat-words"><img class="textLogo" src="{% static 'game/images/githubIcon.png' %}">&nbsp;Code Available on Github</a>
+  </div>
+</nav>

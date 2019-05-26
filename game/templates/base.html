@@ -11,11 +11,14 @@
         <link rel="stylesheet" type="text/css" href="{% static 'game/bootstrap/bootstrap-social.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'game/style.css' %}">
         <link rel="shortcut icon" type="image/png" href="{% static 'game/images/favicon.ico' %}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     </head>
 
     <body>
 	{% include "game/topnav.html" %}
+    <div>
     {% block content %}
     {% endblock content %}
+    </div>
     </body>
 </html>

@@ -73,7 +73,6 @@ li a:hover.topNav {
 }
 
 #indexCard {
-  width: 100%;
   margin: auto;
   background-color: orange;
 }
@@ -141,11 +140,6 @@ li a:hover.topNav {
   background-color: orange;
 }
 
-#catImage {
-  width: 400px;
-  height: 400px;
-}
-
 #catImage2 {
   width: 300px;
   height: 250px;
@@ -178,6 +172,20 @@ li a:hover.topNav {
 .textLogo {
   height: 50px;
 }
+
+.img-responsive {
+  width:100%;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.sansSerifFont {
+  font-family: "sans-serif"
+}
+
 
 
 

@@ -31,34 +31,45 @@
         </div>
     </div>
 
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <img src="{% static 'game/images/welcome_to.png' %}">
-            <img src="{% static 'game/images/category_words.png' %}">
-            <h1>A fun word game for all ages</h1>
+    <div class="jumbotron jumbotron-fluid d-none d-lg-block">
+        <div class="row">
+            <div class="col-lg-3 col-centered ">
+                <img src="{% static 'game/images/category_words.png' %}" class="img-responsive hidden-md-down">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <h5 class="sansSerifFont">A fun word game for all ages</h5>
+            </div>
         </div>
     </div>
-    <img id="catImage" src="{% static 'game/images/cartoon-cat.png' %}">
-    <div class="col-sm-12">
-    <div class="card" id="indexCard">
-        <div style="width: 100%" class="card-body" id="indexCardBody">
-            <h2>Please choose a category</h2>
-            {% if category_list %}
-            <select id="categoryList" class="custom-select" name="category" form="categoryform">
-                {% for category in category_list %}
-                <option value="{{ category.category_text }}">{{ category.category_text }}</option>
-                {% endfor %}
-            </select>
-            <hr>
-            <form action="" id="categoryform" method="post">
-                {% csrf_token %}
-                <button id="letsPlay" class="btn btn-secondary" type="submit">Let's Play!</button>
-            </form>
-            {% else %}
-            <p>No Categories are available.</p>
-            {% endif %}
+    <div class="row">
+        <div class="col-sm-12 col-lg-3 col-centered">
+        <img id="catImage" src="{% static 'game/images/cartoon-cat.png' %}" class="img-responsive">
         </div>
     </div>
+    <div class="row">
+        <div class="col-sm-12 col-lg-3 col-centered">
+            <div class="card" id="indexCard">
+                <div class="card-body" id="indexCardBody">
+                    <h3 class="sansSerifFont">Please choose a category</h3>
+                    {% if category_list %}
+                    <select id="categoryList" class="custom-select" name="category" form="categoryform">
+                        {% for category in category_list %}
+                        <option value="{{ category.category_text }}">{{ category.category_text }}</option>
+                        {% endfor %}
+                    </select>
+                    <hr>
+                    <form action="" id="categoryform" method="post">
+                        {% csrf_token %}
+                        <button id="letsPlay" class="btn btn-secondary" type="submit">Let's Play!</button>
+                    </form>
+                    {% else %}
+                    <p>No Categories are available.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock content %}
