@@ -18,12 +18,11 @@ $( document ).ready(function() {
       // Output the result in an element with id="demo"
       //document.getElementById("countdownTimer").innerHTML = seconds + "s ";
       $("#countdownTimer").html(seconds + "s ");
-
       // If the count down is over, The game is over
       if (distance < 0) {
         clearInterval(x);
         $("#countdownTimer").html("TIMES UP!");
-        window.location.href = 'http://' + document.domain + ':8000/game/scores';
+        window.location.href = window.location.origin + '/game/scores';
         return false;
       }
     }, 1000);
