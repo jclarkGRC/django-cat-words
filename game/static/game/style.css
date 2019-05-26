@@ -73,7 +73,7 @@ li a:hover.topNav {
 }
 
 #indexCard {
-  width: 50%;
+  width: 100%;
   margin: auto;
   background-color: orange;
 }
