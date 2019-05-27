@@ -85,7 +85,25 @@ li a:hover.topNav {
   margin-right: 10px;
 }
 
+#currentScoreDesktop {
+  border: 1px solid black;
+  border-width: thick;
+  border-radius: 25px;
+  background-color: orange;
+  padding: 10px;
+  margin-right: 10px;
+}
+
 #categoryTitle {
+  border: 1px solid black;
+  border-width: thick;
+  border-radius: 25px;
+  background-color: orange;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+#categoryTitleDesktop {
   border: 1px solid black;
   border-width: thick;
   border-radius: 25px;
@@ -103,7 +121,26 @@ li a:hover.topNav {
   padding: 10px;
 }
 
+#countdownContainerDesktopView {
+  border: 1px solid black;
+  border-width: thick;
+  border-radius: 25px;
+  min-height: 50%;
+  max-height: 50%;
+  background-color: orange;
+  padding: 10px;
+  margin-right: 10px;
+}
+
 #currentWord {
+  border: 1px solid black;
+  border-width: thick;
+  border-radius: 25px;
+  background-color: orange;
+  padding: 10px;
+}
+
+#currentWordDesktopView {
   border: 1px solid black;
   border-width: thick;
   border-radius: 25px;
@@ -144,9 +181,14 @@ li a:hover.topNav {
   border-radius: 25px;
 }
 
+#catImage2 {
+  width: 325px;
+  height: 300px;
+}
+
 #catImage2small {
-  width: 150px;
-  height: 150px;
+  width: 175px;
+  height: 100px;
 }
 
 #catImage3 {

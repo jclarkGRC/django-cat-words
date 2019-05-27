@@ -5,20 +5,42 @@
 <script type="text/javascript" src="{% static 'game/js/game.js' %}"></script>
 
 <div class="jumbotron jumbotron-fluid">
+    <!--row 1-->
     <div class="row">
-        <div class=".col-4 .col-sm-6 .col-md-6 .col-lg-4 col-centered">
+        <!--desktop view-->
+        <div class="col-lg-4 d-none d-sm-block">
+            <div id="categoryTitleDesktop">
+                <h1>The current category is:</h1>
+                <h1><strong>{{category}}</strong></h1>
+            </div>
+        </div>
+        <div class="col-lg-4 d-none d-sm-block">
+            <img src="{% static 'game/images/catWords.png' %}">
+        </div>
+        <div class="col-lg-4 d-none d-sm-block">
+            <div id="currentScoreDesktop">
+                <h1>Current Score: </h1>
+                {% if current_score %}
+                <h1><strong>{{ current_score }}</strong></h1>
+                {% else %}
+                <h1>0</h1>
+                {% endif %}
+            </div>
+        </div>
+        <!--mobile view-->
+        <div class=".col-4 d-sm-none col-centered">
             <div id="categoryTitle">
                 <h5>Category:</h5>
                 <h5><strong>{{category}}</strong></h5>
             </div>
         </div>
-        <div class=".col-4 .col-sm-6 .col-md-6 .col-lg-4 col-centered">
+        <div class=".col-4 d-sm-none col-centered">
             <div id='countdownContainer'>
                 <h5>Time remaining:</h5>
-                <h5><strong id="countdownTimer"></strong></h5>
+                <h5><strong class="countdownTimer"></strong></h5>
             </div>
         </div>
-        <div class=".col-4 .col-sm-6 .col-md-6 .col-lg-4 col-centered">
+        <div class=".col-4 d-sm-none col-centered">
             <div id="currentScore">
                 <h5>Score: </h5>
                 {% if current_score %}
@@ -30,8 +52,30 @@
         </div>
     </div>
     <br>
+    <!--row 2-->
     <div class="row">
-        <div id="currentWord" class=".col-3 .col-sm-6 .col-md-6 .col-lg-12 col-centered">
+        <!--desktop view-->
+        <div class="col-lg-4 d-none d-sm-block">
+            <div id="currentWordDesktopView">
+                <h1>Current word is: </h1>
+                {% if current_word %}
+                <h1><strong>{{current_word}}</strong></h1>
+                {% else %}
+                <h3><strong>Please enter a word related to {{category}} to start playing</strong></h3>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-lg-4 d-none d-sm-block">
+            <img id="catImage2" src="{% static 'game/images/cartoon-cat3.png' %}">
+        </div>
+        <div class="col-lg-4 d-none d-sm-block">
+            <div id='countdownContainerDesktopView'>
+                <h1>Time remaining:</h1>
+                <h1><strong class="countdownTimer"></strong></h1>
+            </div>
+        </div>
+        <!--mobile view-->
+        <div id="currentWord" class=".col-3 d-sm-none col-centered">
             <h5>Current word: </h5>
             {% if current_word %}
             <h5><strong>{{current_word}}</strong></h5>
@@ -41,8 +85,11 @@
         </div>
     </div>
 </div>
+<!--row 3-->
 <div class="row">
-    <div class=".col-12 .col-lg-12 col-centered">
+    <!--desktop view-->
+    <!--mobile view-->
+    <div class=".col-12 .col-lg-4 col-centered">
         <div id="guessWord">
             <h5>Guess a word that starts with: </h5>
             {% if letter_guess %}
@@ -55,7 +102,8 @@
 </div>
 <br>
 <div class="row">
-    <div class=".col-6 col-centered">
+    <!--mobile view-->
+    <div class=".col-6 .col-lg-6 col-centered">
         <form action="" id="currentWordForm" method="post">
             {% csrf_token %}
             <input id="enterWordForm" class="form-control form-control-lg" name="current_word" type="text" placeholder="enter word...">
@@ -66,10 +114,12 @@
 </div>
 <br>
 <div class="row">
-    <div class=".col-6 col-centered">
+
+    <!--mobile view-->
+    <div class=".col-4 d-sm-none col-centered">
         <img id="catImage2small" src="{% static 'game/images/cartoon-cat3.png' %}">
     </div>
-    <div class=".col-6 col-centered">
+    <div class=".col-4 .col-lg-6 col-centered">
         <div id="usedWordsList">
             <div id="usedWordsListTitle">
                 <h5>Used words list</h5>
