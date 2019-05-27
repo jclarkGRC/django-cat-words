@@ -31,7 +31,7 @@
     </div>
     <br>
     <div class="row">
-        <div id="currentWord" class=".col-3 .col-sm-6 .col-md-6 .col-lg-4 col-centered">
+        <div id="currentWord" class=".col-3 .col-sm-6 .col-md-6 .col-lg-12 col-centered">
             <h5>Current word: </h5>
             {% if current_word %}
             <h5><strong>{{current_word}}</strong></h5>
@@ -42,7 +42,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-4">
+    <div class=".col-12 .col-lg-12 col-centered">
         <div id="guessWord">
             <h5>Guess a word that starts with: </h5>
             {% if letter_guess %}
@@ -59,6 +59,7 @@
         <form action="" id="currentWordForm" method="post">
             {% csrf_token %}
             <input id="enterWordForm" class="form-control form-control-lg" name="current_word" type="text" placeholder="enter word...">
+            <br>
             <button id="saveWordButton" type="submit" class="btn btn-outline-warning btn-lg active">Save Word!</button>
         </form>
     </div>
