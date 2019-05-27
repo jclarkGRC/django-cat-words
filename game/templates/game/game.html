@@ -28,35 +28,40 @@
             </div>
         </div>
         <!--mobile view-->
-        <div class=".col-6 d-sm-none col-centered">
-            <div id="categoryTitle">
-                <h5>Category:</h5>
-                <h5><strong>{{category}}</strong></h5>
+        <div class="container">
+            <div class="row">
+                <div id="categoryTitle" class="card .col-6 d-sm-none col-centered" style="float: left;">
+                    <div class="card-body">
+                        <h5 class="card-title">Category:</h5>
+                        <p class="card-text">{{category}}</p>
+                    </div>
+                </div>
+                <div id="countdownContainer" class="card .col-6 d-sm-none col-centered" style="float: right;">
+                    <div class="card-body">
+                        <h5 class="card-title">Time remaining:</h5>
+                        <p class="card-text"><strong class="countdownTimer"></strong></p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class=".col-6 d-sm-none col-centered">
-            <div id='countdownContainer'>
-                <h5>Time remaining:</h5>
-                <h5><strong class="countdownTimer"></strong></h5>
+            <hr>
+            <div class="row">
+                <div id="currentScore" class="card .col-6-auto d-sm-none col-centered" style="float: left;">
+                    <div class="card-body">
+                        <h5 class="card-title">Score</h5>
+                        {% if current_score %}
+                        <p class="card-text">{{ current_score }}</p>
+                        {% else %}
+                        <h5>0</h5>
+                        {% endif %}
+                    </div>
+                </div>
+                <div id="currentWord" class="card .col-6 d-sm-none col-centered" style="float: right;">
+                    <div class="card-body">
+                        <h5 class="card-title">Current Word:</h5>
+                        <p class="card-text"><strong>{{category}} related word</strong></p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class=".col-6 d-sm-none col-centered">
-            <div id="currentScore">
-                <h5>Score: </h5>
-                {% if current_score %}
-                <h5><strong>{{ current_score }}</strong></h5>
-                {% else %}
-                <h5>0</h5>
-                {% endif %}
-            </div>
-        </div>
-        <div id="currentWord" class=".col-6 d-sm-none col-centered">
-            <h5>Current word: </h5>
-            {% if current_word %}
-            <h5><strong>{{current_word}}</strong></h5>
-            {% else %}
-            <h5><strong>{{category}} related words</strong></h5>
-            {% endif %}
         </div>
     </div>
     <br>
@@ -83,14 +88,14 @@
             </div>
         </div>
         <!--mobile view-->
-<!--        <div id="currentWord" class=".col-3 d-sm-none col-centered">-->
-<!--            <h5>Current word: </h5>-->
-<!--            {% if current_word %}-->
-<!--            <h5><strong>{{current_word}}</strong></h5>-->
-<!--            {% else %}-->
-<!--            <h5><strong>Enter a word related to {{category}}</strong></h5>-->
-<!--            {% endif %}-->
-<!--        </div>-->
+        <!--        <div id="currentWord" class=".col-3 d-sm-none col-centered">-->
+        <!--            <h5>Current word: </h5>-->
+        <!--            {% if current_word %}-->
+        <!--            <h5><strong>{{current_word}}</strong></h5>-->
+        <!--            {% else %}-->
+        <!--            <h5><strong>Enter a word related to {{category}}</strong></h5>-->
+        <!--            {% endif %}-->
+        <!--        </div>-->
     </div>
 </div>
 <!--row 3-->
@@ -114,7 +119,8 @@
     <div class=".col-6 .col-lg-6 col-centered">
         <form action="" id="currentWordForm" method="post">
             {% csrf_token %}
-            <input id="enterWordForm" class="form-control form-control-lg" name="current_word" type="text" placeholder="enter word...">
+            <input id="enterWordForm" class="form-control form-control-lg" name="current_word" type="text"
+                   placeholder="enter word...">
             <br>
             <button id="saveWordButton" type="submit" class="btn btn-outline-warning btn-lg active">Save Word!</button>
         </form>
@@ -122,26 +128,25 @@
 </div>
 <br>
 <div class="row">
-
     <!--mobile view-->
     <div class=".col-4 d-sm-none col-centered">
         <img id="catImage2small" src="{% static 'game/images/cartoon-cat3.png' %}">
     </div>
     <div class=".col-4 .col-lg-6 col-centered">
-        <div id="usedWordsList">
+        <div>
             <div id="usedWordsListTitle">
                 <h5>Used words list</h5>
             </div>
             <div class="overflow-auto">
-            {% if saved_words %}
-            <ul id="wordList" class="list-group">
-                {% for word in saved_words %}
-                <li class="list-group-item"><strong><h5>{{word}}</h5></strong></li>
-                {% endfor %}
-            </ul>
-            {% else %}
-            <p><strong>No saved words yet...</strong></p>
-            {% endif %}
+                {% if saved_words %}
+                <ul class="list-group">
+                    {% for word in saved_words %}
+                    <li class="list-group-item"><strong><h5>{{word}}</h5></strong></li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p><strong>No saved words yet...</strong></p>
+                {% endif %}
             </div>
         </div>
     </div>
