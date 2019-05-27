@@ -28,19 +28,19 @@
             </div>
         </div>
         <!--mobile view-->
-        <div class=".col-4 d-sm-none col-centered">
+        <div class=".col-6 d-sm-none col-centered">
             <div id="categoryTitle">
                 <h5>Category:</h5>
                 <h5><strong>{{category}}</strong></h5>
             </div>
         </div>
-        <div class=".col-4 d-sm-none col-centered">
+        <div class=".col-6 d-sm-none col-centered">
             <div id='countdownContainer'>
                 <h5>Time remaining:</h5>
                 <h5><strong class="countdownTimer"></strong></h5>
             </div>
         </div>
-        <div class=".col-4 d-sm-none col-centered">
+        <div class=".col-6 d-sm-none col-centered">
             <div id="currentScore">
                 <h5>Score: </h5>
                 {% if current_score %}
@@ -49,6 +49,15 @@
                 <h5>0</h5>
                 {% endif %}
             </div>
+        </div>
+
+        <div id="currentWord" class=".col-6  col-centered">
+            <h5>Current word: </h5>
+            {% if current_word %}
+            <h5><strong>{{current_word}}</strong></h5>
+            {% else %}
+            <h5><strong>{{category}} related words</strong></h5>
+            {% endif %}
         </div>
     </div>
     <br>
@@ -75,14 +84,14 @@
             </div>
         </div>
         <!--mobile view-->
-        <div id="currentWord" class=".col-3 d-sm-none col-centered">
-            <h5>Current word: </h5>
-            {% if current_word %}
-            <h5><strong>{{current_word}}</strong></h5>
-            {% else %}
-            <h5><strong>Enter a word related to {{category}}</strong></h5>
-            {% endif %}
-        </div>
+<!--        <div id="currentWord" class=".col-3 d-sm-none col-centered">-->
+<!--            <h5>Current word: </h5>-->
+<!--            {% if current_word %}-->
+<!--            <h5><strong>{{current_word}}</strong></h5>-->
+<!--            {% else %}-->
+<!--            <h5><strong>Enter a word related to {{category}}</strong></h5>-->
+<!--            {% endif %}-->
+<!--        </div>-->
     </div>
 </div>
 <!--row 3-->
