@@ -57,11 +57,6 @@ li a:hover.topNav {
   background: orange;
 }
 
-#enterWordForm {
-  width:50%;
-  margin: auto;
-}
-
 #categoryList {
   width: 50%
 }
@@ -86,7 +81,17 @@ li a:hover.topNav {
   border-width: thick;
   border-radius: 25px;
   background-color: orange;
+  padding: 10px;
   margin-right: 10px;
+}
+
+#categoryTitle {
+  border: 1px solid black;
+  border-width: thick;
+  border-radius: 25px;
+  background-color: orange;
+  padding: 10px;
+  margin-left: 10px;
 }
 
 #countdownContainer {
@@ -94,8 +99,8 @@ li a:hover.topNav {
   border-width: thick;
   border-radius: 25px;
   background-color: orange;
-  margin-right: 10px;
-  min-height: 50%;
+  min-height: 100%;
+  padding: 10px;
 }
 
 #currentWord {
@@ -103,7 +108,7 @@ li a:hover.topNav {
   border-width: thick;
   border-radius: 25px;
   background-color: orange;
-  margin-left: 10px;
+  padding: 10px;
 }
 
 #guessWord {
@@ -111,14 +116,7 @@ li a:hover.topNav {
   border-width: thick;
   border-radius: 25px;
   background-color: orange;
-}
-
-#categoryTitle {
-  border: 1px solid black;
-  border-width: thick;
-  border-radius: 25px;
-  margin-left: 10px;
-  background-color: orange;
+  margin-top: 0 auto
 }
 
 #usedWordsList {
@@ -133,16 +131,19 @@ li a:hover.topNav {
 #usedWordsListTitle {
   border-bottom: 1px solid black;
   border-width: thick;
+  padding: 10px;
 }
 
 #wordList {
   height: 200px;
   background-color: orange;
+  padding: 10px;
+  border-radius: 25px;
 }
 
-#catImage2 {
-  width: 300px;
-  height: 250px;
+#catImage2small {
+  width: 150px;
+  height: 150px;
 }
 
 #catImage3 {
